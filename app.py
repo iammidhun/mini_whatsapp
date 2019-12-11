@@ -2,6 +2,7 @@ from flask import Flask
 from flask_mongoengine import MongoEngine
 from flask_restful import Resource, Api
 from pymongo import MongoClient
+from flask_login import login_manager
 
 app = Flask(__name__)
 
@@ -15,6 +16,9 @@ app.config['MONGODB_SETTINGS'] = {
 	'host': 'localhost',
 	'port': 27017
 }
+db = MongoEngine(app)
+api = Api(app)
+
 if __name__ == "__main__":
 	app.run(debug=True)
 	
